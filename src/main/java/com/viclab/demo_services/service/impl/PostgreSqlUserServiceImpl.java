@@ -5,17 +5,18 @@ import com.viclab.demo_services.entity.User;
 import com.viclab.demo_services.exception.ResourceNotFoundException;
 import com.viclab.demo_services.payload.UserDTO;
 import com.viclab.demo_services.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service("postgresUserService")
 public class PostgreSqlUserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public PostgreSqlUserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDTO createUser(UserDTO userDto) {
@@ -28,6 +29,10 @@ public class PostgreSqlUserServiceImpl implements UserService {
 
         User savedUser = userRepository.save(user);
 
+        return getUserDTO(savedUser);
+    }
+
+    private UserDTO getUserDTO(User savedUser) {
         UserDTO response = new UserDTO();
         response.setId(savedUser.getId());
         response.setName(savedUser.getName());
@@ -41,10 +46,9 @@ public class PostgreSqlUserServiceImpl implements UserService {
     @Override
     public List<UserDTO> getAllUsers() {
         List<User> users = userRepository.findAll();
-        List<UserDTO> userDTOS = users.stream()
-                .map(user -> mapToDTO(user))
-                .collect(Collectors.toUnmodifiableList());
-        return userDTOS;
+        return users.stream()
+                .map(this::mapToDTO)
+                .toList();
     }
 
     @Override
@@ -75,13 +79,6 @@ public class PostgreSqlUserServiceImpl implements UserService {
     }
 
     private UserDTO mapToDTO(User user) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setName(user.getName());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setPhone(user.getPhone());
-        userDTO.setStatus(user.getStatus());
-
-        return userDTO;
+        return getUserDTO(user);
     }
 }

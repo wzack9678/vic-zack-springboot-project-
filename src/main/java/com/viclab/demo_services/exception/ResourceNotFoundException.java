@@ -1,8 +1,12 @@
 package com.viclab.demo_services.exception;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@Setter
+@Getter
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException{
     private String resourceName;
@@ -17,27 +21,4 @@ public class ResourceNotFoundException extends RuntimeException{
         this.fieldValue = fieldValue;
     }
 
-    public String getResourceName() {
-        return resourceName;
-    }
-
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public long getFieldValue() {
-        return fieldValue;
-    }
-
-    public void setResourceName(String resourceName) {
-        this.resourceName = resourceName;
-    }
-
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
-    public void setFieldValue(long fieldValue) {
-        this.fieldValue = fieldValue;
-    }
 }
