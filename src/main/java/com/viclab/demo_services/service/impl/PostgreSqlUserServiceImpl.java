@@ -19,11 +19,12 @@ public class PostgreSqlUserServiceImpl implements UserService {
 
     @Override
     public UserDTO createUser(UserDTO userDto) {
-        User user = new User();
-        user.setName(userDto.getName());
-        user.setEmail(userDto.getEmail());
-        user.setPhone(userDto.getPhone());
-        user.setStatus(userDto.getStatus());
+        User user = new User(
+                userDto.getName(),
+                userDto.getEmail(),
+                userDto.getPhone(),
+                userDto.getStatus()
+        );
 
         User savedUser = userRepository.save(user);
 
