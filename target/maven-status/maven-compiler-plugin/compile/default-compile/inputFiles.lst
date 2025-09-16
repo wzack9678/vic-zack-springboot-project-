@@ -1,0 +1,6 @@
+/Users/apple/Desktop/vic/backend-homework-Aug-2025/hw6/demo-services/src/main/java/com/viclab/demo_services/DemoServicesApplication.java
+/Users/apple/Desktop/vic/backend-homework-Aug-2025/hw6/demo-services/src/main/java/com/viclab/demo_services/dao/UserRepository.java
+/Users/apple/Desktop/vic/backend-homework-Aug-2025/hw6/demo-services/src/main/java/com/viclab/demo_services/entity/User.java
+/Users/apple/Desktop/vic/backend-homework-Aug-2025/hw6/demo-services/src/main/java/com/viclab/demo_services/payload/UserDTO.java
+/Users/apple/Desktop/vic/backend-homework-Aug-2025/hw6/demo-services/src/main/java/com/viclab/demo_services/service/UserService.java
+/Users/apple/Desktop/vic/backend-homework-Aug-2025/hw6/demo-services/src/main/java/com/viclab/demo_services/service/impl/DummyUserServiceImpl.java

@@ -1,0 +1,6 @@
+com/viclab/demo_services/entity/User.class
+com/viclab/demo_services/service/impl/DummyUserServiceImpl.class
+com/viclab/demo_services/DemoServicesApplication.class
+com/viclab/demo_services/dao/UserRepository.class
+com/viclab/demo_services/service/UserService.class
+com/viclab/demo_services/payload/UserDTO.class
