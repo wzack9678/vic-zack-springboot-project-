@@ -194,6 +194,8 @@ docker exec -it demo-postgres bash
 ```bash
 psql -U demo_user -W -d demo
 ```
+spring.datasource.password=demo_pass
+
 
 退出 psql：
 ```sql
