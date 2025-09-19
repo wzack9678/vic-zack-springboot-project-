@@ -196,6 +196,8 @@ psql -U demo_user -W -d demo
 ```
 spring.datasource.password=demo_pass
 
+list all tables
+\d
 
 退出 psql：
 ```sql
