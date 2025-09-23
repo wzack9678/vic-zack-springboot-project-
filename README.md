@@ -197,12 +197,43 @@ psql -U demo_user -W -d demo
 spring.datasource.password=demo_pass
 
 list all tables
+```bash
 \d
+```
+
+切换数据库:
+```bash
+\c demo
+```
+查看所有表
+```bash
+
+\dt
+```
+
+查看表结构
+```bash
+
+\d users
+\d products
+\d orders
+```
+
+查询数据
+```bash
+
+SELECT * FROM users;
+SELECT * FROM products;
+SELECT * FROM orders;
+```
+
 
 退出 psql：
 ```sql
 \q
 ```
+
+
 
 ---
 
