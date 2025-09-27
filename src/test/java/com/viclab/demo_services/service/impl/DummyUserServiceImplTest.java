@@ -30,5 +30,6 @@ public class DummyUserServiceImplTest {
         assertNotNull(saved.getId());
         assertEquals("Alice", saved.getName());
         assertEquals("ACTIVE", saved.getStatus());
+
     }
 }
