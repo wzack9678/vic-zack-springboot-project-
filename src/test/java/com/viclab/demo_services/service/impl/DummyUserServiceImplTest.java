@@ -1,6 +1,7 @@
 package com.viclab.demo_services.service.impl;
 
 import com.viclab.demo_services.payload.UserDTO;
+import com.viclab.demo_services.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DummyUserServiceImplTest {
 
-    private DummyUserServiceImpl userService;
+    private UserService userService;
 
     @BeforeEach
     void setUp() {
