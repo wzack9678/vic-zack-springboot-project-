@@ -24,7 +24,7 @@ class UserServiceImplTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private UserServiceImpl userService;
+    private PostgreSqlUserServiceImpl userService;
 
     private User sampleUser;
     private UserDTO expectedUserDTO;
