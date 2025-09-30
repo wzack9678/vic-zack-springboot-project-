@@ -6,8 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DummyUserServiceImplTest {
     private UserService userService;
@@ -30,6 +31,11 @@ public class DummyUserServiceImplTest {
         assertNotNull(saved.getId());
         assertEquals("Alice", saved.getName());
         assertEquals("ACTIVE", saved.getStatus());
-
+    }
+    @Test
+    @DisplayName("Should return at least one seeded user")
+    void getAllUsers_shouldReturnAtLeastSeededUser() {
+        List<UserDTO> users = userService.getAllUsers();
+        assertTrue(users.size() >= 1);
     }
 }
