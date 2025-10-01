@@ -4,6 +4,7 @@ import com.viclab.demo_services.entity.User;
 import com.viclab.demo_services.exception.ResourceNotFoundException;
 import com.viclab.demo_services.payload.UserDTO;
 import com.viclab.demo_services.dao.UserRepository;
+import com.viclab.demo_services.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,14 +25,21 @@ class UserServiceImplTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private PostgreSqlUserServiceImpl userService;
+    private PostgreSqlUserServiceImpl userServiceImpl;  // 让 Mockito 创建实现类实例
+
+
+    private UserService userService;
 
     private User sampleUser;
     private UserDTO expectedUserDTO;
 
     @BeforeEach
     void setUp() {
+        userService = userServiceImpl;
+
+
         // Setup sample user
+
         sampleUser = new User();
         sampleUser.setId(1L);
         sampleUser.setName("John Doe");
