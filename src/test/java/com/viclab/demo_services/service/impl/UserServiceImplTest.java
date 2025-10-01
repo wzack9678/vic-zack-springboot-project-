@@ -57,6 +57,63 @@ class UserServiceImplTest {
     }
 
     @Test
+    @DisplayName("Should create a new user and return saved UserDTO")
+    void createUser_shouldSaveUserAndReturnDTO () {
+        UserDTO requestDTO = new UserDTO();
+        requestDTO.setName("Alice");
+        requestDTO.setEmail("alice@example.com");
+        requestDTO.setPhone("1234567890");
+        requestDTO.setStatus("ACTIVE");
+
+        User savedUser = new User();
+        savedUser.setId(100L);
+        savedUser.setName("Alice");
+        savedUser.setEmail("alice@example.com");
+        savedUser.setPhone("1234567890");
+        savedUser.setStatus("ACTIVE");
+
+        when(userRepository.save(any(User.class))).thenReturn(savedUser);
+
+        UserDTO result = userService.createUser(requestDTO);
+
+        assertNotNull(result);
+        assertEquals(100L, result.getId());
+        assertEquals("Alice", result.getName());
+        assertEquals("alice@example.com", result.getEmail());
+        assertEquals("1234567890", result.getPhone());
+        assertEquals("ACTIVE", result.getStatus());
+
+        verify(userRepository,times(1)).save(any(User.class));
+    }
+
+    @Test
+    @DisplayName("Should throw exception when repository save fails")
+    void createUser_whenRepositoryThrowsException_shouldPropagate() {
+        // Arrange
+        UserDTO requestDTO = new UserDTO();
+        requestDTO.setName("Bob");
+        requestDTO.setEmail("bob@example.com");
+        requestDTO.setPhone("9876543210");
+        requestDTO.setStatus("ACTIVE");
+
+        when(userRepository.save(any(User.class)))
+                .thenThrow(new RuntimeException("Database error"));
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> userService.createUser(requestDTO)
+        );
+
+        assertTrue(exception.getMessage().contains("Database error"));
+
+        // Verify repository interaction
+        verify(userRepository, times(1)).save(any(User.class));
+    }
+
+
+
+    @Test
     @DisplayName("Should return user DTO when user exists")
     void getUserById_whenUserExists_shouldReturnUserDTO() {
         // Arrange
