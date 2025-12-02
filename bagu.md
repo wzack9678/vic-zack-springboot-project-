@@ -1712,9 +1712,9 @@ A cookie stores small pieces of data on the client side, while a session stores 
 
 - Show
     
-    **`CompletableFuture`** is an extension of the `Future` class to handle **asynchronous** programming
+    **`CompletableFuture`** is an implementation and enhancement of the Future interface for **asynchronous** programming
     
-    **Non-blocking**: Unlike the `Future` ’s `get()` method, you can use `thenApply()` , `thenAccept()`, `thenReturn` callbacks.
+    **Non-blocking**: Unlike the `Future` ’s `get()` method, you can use `thenApply()` , `thenAccept()`, `thenRun()` callbacks.
     
     **Chain Multiple Futures**: We can chain `CompletableFuture` in a pipeline use `thenApply()`,`thenCompose()`, `thenCombine()`, `allOf()`, `anyOf()`
     
